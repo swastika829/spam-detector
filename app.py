@@ -2,10 +2,10 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-# Page config
+
 st.set_page_config(page_title="Email Spam Detector", page_icon="📧", layout="centered")
 
-# Custom CSS
+
 st.markdown("""
     <style>
     .main { background-color: #f0f4f8; }
@@ -20,17 +20,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Load model
+
 model = joblib.load('spam_model.joblib')
 feature_names = model.feature_names_in_
 
-# Header
+
 st.markdown('<div class="title">📧 Email Spam Detector</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Powered by Machine Learning · Logistic Regression · 95% Accuracy</div>', unsafe_allow_html=True)
 
 st.divider()
 
-# Stats row
+
 col1, col2, col3 = st.columns(3)
 col1.metric("Model", "Logistic Regression")
 col2.metric("Accuracy", "~95%")
@@ -38,7 +38,7 @@ col3.metric("Dataset", "Kaggle BoW")
 
 st.divider()
 
-# Input
+
 email_input = st.text_area("📩 Paste your email text here:", height=180, placeholder="Type or paste an email message...")
 
 if st.button("🔍 Check Email"):
@@ -71,5 +71,5 @@ if st.button("🔍 Check Email"):
 
         st.progress(int(spam_prob))
 
-# Footer
+
 st.markdown('<div class="footer">Made by Swastika Kumari · B.Tech CSE · Galgotias University · 2025-26</div>', unsafe_allow_html=True)
